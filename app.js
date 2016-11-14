@@ -1,3 +1,4 @@
+var coffeeScript = require('coffee-script/register');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -7,6 +8,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var logIn = require('./routes/log_in');
 
 var app = express();
 
@@ -20,10 +22,12 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(require("connect-assets")());
+// app.use(express.static(path.join(__dirname, 'assets')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/login_enpoint', logIn);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
