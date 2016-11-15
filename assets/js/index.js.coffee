@@ -17,7 +17,7 @@ onSignIn = ->
       console.log data
 
     onSuccess = (data) ->
-      console.log(data)
+      location.href="dashboard";
 
     data = {}
     data.username = username
