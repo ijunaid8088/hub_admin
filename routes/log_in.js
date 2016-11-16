@@ -1,5 +1,6 @@
 var express = require('express');
 var request = require('request');
+var session = require('express-session');
 var router = express.Router();
 
 /* GET users listing. */
@@ -16,6 +17,8 @@ router.post('/', function(req, res, next) {
     if (err) {
       return console.error('Api call failed:', err);
     }
+    setSession = req.session;
+    setSession.body =  body;
     res.send(body)
   });
 });
