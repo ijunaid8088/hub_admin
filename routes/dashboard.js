@@ -5,8 +5,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   getSession = req.session;
-  if (getSession.body) {
-    console.log(getSession);
+  if (getSession.statusCode == 200) {
     res.render('dashboard', { title: 'Dashboard' });
   }
   else{

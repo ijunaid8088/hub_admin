@@ -19,6 +19,7 @@ router.post('/', function(req, res, next) {
     }
     setSession = req.session;
     setSession.body =  body;
+    setSession.statusCode = httpResponse.statusCode;
     res.send(body)
   });
 });
